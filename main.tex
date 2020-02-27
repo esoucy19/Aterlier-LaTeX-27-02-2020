@@ -1,0 +1,181 @@
+% PRÉAMBULE
+\documentclass[letterpaper, french, 12pt]{article} % classe du doc
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{fullpage}
+
+% Quelques options
+\setlength{\parindent}{0 cm}
+\setlength{\parskip}{\baselineskip}
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+% \pagenumbering{gobble}
+
+% DÉBUT DU DOCUMENT
+\begin{document} % environnement document
+Ceci est un texte d'introduction à LaTeX.
+Qu'arrive-t-il quand on saute une ligne?\\
+Saut de ligne manuel
+
+Ceci est un deuxième paragraphe.
+
+Quelques commandes de base:
+
+\section{Première section} % début d'une section numérotée
+\section*{Section sans numéro} % On utilise une étoile pour dénoter une section non numérotée
+
+\subsection{Ceci est une sous-section}
+Ceci est le texte de la première sous-section.
+
+\subsection*{Sous-section non numérotée}
+
+\subsubsection{Sous-sous-section}
+\subsubsection*{Sous-sous-section non numérotée}
+
+\section{Commandes de format de texte}
+\subsection{Pour faire des listes:}
+
+1. Bullet points
+\begin{itemize}
+    \item Premier point.
+    \item Deuxième point.
+    \item Troisième point.
+\end{itemize}
+
+2. Liste numérotée
+\begin{enumerate}
+    \item Titre: Numéro 1
+    \item Numéro 2
+    \item Numéro 3
+\end{enumerate}
+
+\subsection{Format du texte}
+\begin{itemize}
+    \item Texte en italique: \textit{Italique}
+    \item Texte en gras: \textbf{bold font}
+    \item Texte sous ligné \underline{sous-ligné}
+\end{itemize}
+
+\section{Mathématiques de base}
+Pour insérer du texte mathématique au milieu
+d'une phrase, on utilise le signe de dollars:
+\$...\$. Par exemple, soient $x, a$ et $b$, des entiers: $f(x) = ax + b$.
+
+Pour insérer des mathématiques sur leur propre ligne, on utilise les brackets:
+\[
+f(x) = ax^2 + bx + c
+\]
+
+Il est recommandé par contre d'utiliser plutôt l'environnement "equation", car celui-ci est plus facile à lire et plus puissant. Cette commande numérote aussi les équations de votre document.
+
+\begin{equation}
+    f(x) = ax^3 + bx^2 + cx + d
+\end{equation}
+
+On peut aussi écrire une équation non numérotée avec "equation*" (requière un package par contre).
+
+\begin{equation*}
+    f'(x) = a_0 + a_1x + a_2x^2 + \dots + a_nx^n
+\end{equation*}
+
+\subsection{Quelques caractères mathématiques de base}
+On a:
+\begin{itemize}
+    \item Les opérateurs de base + - * / :
+    $a + b - c * d / e$. On peut aussi utiliser
+    "times" pour imprier le 'x' de multiplication
+    classique: $x \times y$. Sinon la multiplication est explicite entre variables: $ax + by + c$
+    \item Les opérateurs exposant et indice: \^\ et \_ : $a_0x + a_1x^2 + x_1^3$.\\
+    Par défaut les indices et exposants prennent
+    un seul caractère, mais on peut utiliser
+    plusieurs caractères en accolades: $e^{2x+1}$
+    \item Pour la division, on va souvent vouloir
+    utiliser l'opérateur "frac", qui permet de faire des fractions plus esthétiques:
+    $\frac{1}{2}(ax + b)$, ou bien $\frac{x^2 + 1}{x^3 - 1}$
+    Noter que certains caractères mathématiques sont plus difficiles à lire quand ils sont
+    sur la même ligne que le texte. On préfère alors l'environnement équation~:
+    \begin{equation}
+        \frac{x^2 + 1}{x^3 - 1}
+    \end{equation}
+    \begin{equation}
+        \sum_{i=1}^{n}x_i
+    \end{equation}
+    Somme enligée avec le texte: $\sum_{i=1}^{n}x_i$.
+    On peut aussi utiliser l'exposant et l'indice
+    pour faire des fractions: $^3/_4$. Il existe 
+    des packages qui mettent cette notation dans une commande (ex. xfrac).
+    \item Les inéquations: $< \ \leq \ > \ \geq \  \neq \ \equiv$.
+    \item Caractères propositionnels: $\forall \ \in \ \exists \ \subset \ \subseteq \ \supset \ \supseteq$
+    \item Les fonctions de base: $\sin(\theta), \cos(x), \tan(y), \arcsin(z), \sin^{-1}(x)$
+    \item Si on besoin d'écrire du texte dans les mathématiques, on utilise "mathrm", mais souvent "text" est préféré (fournie par le package amsmath): $\mathrm{Im}(A)$ On a vs On a $a$.
+    \\ On préfère plutôt "text"
+    par contre: $\{x \in V \ | \ x \text{ pair et } x < 3 \}$
+    \item \[\int_a^b x \ dx\]
+    \[\iint_a^b\]
+    \[ \sum_{i=0}^n x_n \]
+    \[  \prod_{i=0}^n x_n \]
+    \[ \lim_{n \rightarrow \infty} \]
+    \item Lettres grecques: $\alpha, \pi, \beta$
+    \item mod et binôme: $a \bmod 5$
+    %\[ \binom{k}{n} \]
+\end{itemize}
+
+\section{Petit détour sur les packages}
+Pour importer un package, on utilise la commande "usepackage"
+
+Quelques packages que je recommande d'utiliser:
+\begin{itemize}
+    \item amsmath: Rajoute un paquet de fonctionnalité aux maths dans LaTeX
+    \item amssymb: Rajoute un paquet de symboles manquants.
+    \item mathtools: Rajoute des
+    utilitaires pour les mathématiques
+    \item babel: Sert à localiser la langue du document (ex. mettre en français). On voudra alors
+    aussi utiliser [T1]fontenc
+    pour que LaTeX supporte tous les caractères français.
+\end{itemize}
+On a aussi quelques packages et options qu'on peut utiliser pour modifier le comportement de LaTeX et créer un document qui fait plus "devoir de math".
+\begin{itemize}
+    \item Options:\\
+    $\backslash$setlength\{$\backslash$parindent\}\{0 cm\}\\
+    $\backslash$setlength\{$\backslash$parskip\}\{$\backslash$baselineskip\}
+    \\
+    $\backslash$numberwithin\{equation\}\{section\}\\
+    $\backslash$numberwithin\{figure\}\{section\}
+    
+    \item packages:\\
+    fullpage
+    
+\subsection{Fonctionnalités avancées mathématiques}
+Grâce au package amssymb, nous avons maintenant accès aux lettres doubles pour les ensembles habituels: $\mathbb{R}, \mathbb{Q}, \mathbb{N}$
+
+On a aussi maintenant accès à quelques environnements supplémentaires pour les équations.
+
+\subsubsection{L'environnement align}
+Permet de combiner plusieurs équations dans un même bloc et de les aligner à l'aide de marqueurs.
+\begin{align}
+    \sum_{k=1}^{\infty} \frac{1}{k} &= \frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \dots + \frac{1}{n}\\
+    &= \left\{\frac{1}{1} + \frac{1}{3}\right\}
+    + \left(\frac{1}{2} +
+    \frac{1}{4}\right)
+\end{align}
+
+\begin{equation}
+    \begin{split}
+        1 + 2 + 3 + 4 + 2 + 3 + 4 + 5 + 1 \\
+        + 2 + 3 + 4 + 1 + 1 + 2 + 3 + 4 + 2 + 3 + 4 + 5\\
+        + 1 + 2 + 3 + 4 + 1 + 1 + 2 + 3 + 4 \\
+        + 2 + 3 + 4 + 5 + 1 + 2 + 3 + 4 + 1
+    \end{split}
+\end{equation}
+
+\begin{equation}
+    e^{-\log(1-u)/\alpha}
+\end{equation}
+
+\end{itemize}
+
+\end{document} % fin env. document
+% FIN DU DOCUMENT
